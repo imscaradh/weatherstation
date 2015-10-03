@@ -23,6 +23,5 @@ def weatherdata(request):
     json = request.data
     current = json.get("stats").get("current")
     deserialized = WeatherdataSerializer(data=current)
-    import pdb; pdb.set_trace()
     if deserialized.is_valid():
         modelData = deserialized.save()
