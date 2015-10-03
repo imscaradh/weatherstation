@@ -6,4 +6,6 @@ python:
 install:
         - pip install django djangorestframework markdown
 script:
-        - python manage.py test app
+        - ./manage.py makemigrations
+        - ./manage.py migrate
+        - ./manage.py test app
