@@ -12,11 +12,7 @@ class IndexView(generic.ListView):
     context_object_name = 'latest_question_list'
 
     def get_queryset(self):
-        return Question.objects.order_by('-pub_date')[:5]
-
-class DetailView(generic.DetailView):
-    model = Question
-    template_name = 'app/detail.html'
+        return Weatherdata.objects.all()
 
 @api_view(['GET', 'POST'])
 def weatherdata(request):
