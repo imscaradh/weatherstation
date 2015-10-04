@@ -1,9 +1,41 @@
-{% if latest_question_list %}
-<ul>
-	{% for data in latest_question_list %}
-	<li><a href="#">{{ data.time }}</a></li>
+{% extends "base.html" %}
+
+{% block customhead %}
+{#{% load chartit %}#}
+    {#{{ weatherchart|load_charts:"container" }}#}
+{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1>Tables</h1>
+</div>
+
+{% if plain_data %}
+<table class="table table-striped">
+    <thead>
+	<tr>
+	    <th>#</th>
+	    <th>Date</th>
+	    <th>Out Temp</th>
+	    <th>Wind Speed</th>
+	</tr>
+    </thead>
+    <tbody>
+	{% for data in plain_data %}
+	<tr>
+	    <td></td>
+	    <td>{{ data.time }}</td>
+	    <td>{{ data.outTemp|slice:":-7" }}</td>
+	    <td>{{ data.windSpeed|slice:":-4" }}</td>
+	</tr>
 	{% endfor %}
-</ul>
+    </tbody>
+</table>
 {% else %}
-<p>No questions are available.</p>
+<p>No weatherdata available.</p>
 {% endif %}
+
+<div id='container'> Chart will be rendered here </div>
+
+{% endblock %}
+
