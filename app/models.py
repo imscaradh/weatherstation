@@ -10,8 +10,9 @@ class Choice(models.Model):
     choice_text = models.CharField(max_length=200)
     votes = models.IntegerField(default=0)
 
+
 class Weatherdata(models.Model):
-    time = models.DateTimeField(auto_now=False, auto_now_add=True,unique=True,primary_key=True)
+    time = models.DateTimeField(auto_now_add=True,primary_key=True)
     outTemp = models.CharField(max_length=100)
     windchill = models.CharField(max_length=100)
     heatIndex = models.CharField(max_length=100)

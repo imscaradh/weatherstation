@@ -5,6 +5,7 @@ python:
 install:
         - pip install -r req.txt
 script:
+        - ./patches/apply.sh
         - ./manage.py makemigrations
         - ./manage.py migrate
         - ./manage.py test app

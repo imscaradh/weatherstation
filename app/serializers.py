@@ -1,7 +1,8 @@
-from rest_framework import serializers
-
+from django.core import serializers
 from .models import Weatherdata
+from StringIO import StringIO
 
-class WeatherdataSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Weatherdata
+class WeatherdataTransformer():
+     def __init__(self, data):
+         obj = Weatherdata(**data)
+         obj.save()

@@ -1,8 +1,8 @@
 {% extends "base.html" %}
 
 {% block customhead %}
-{#{% load chartit %}#}
-    {#{{ weatherchart|load_charts:"container" }}#}
+{% load chartit %}
+{{ weatherchart|load_charts:"weatherchart-container" }}
 {% endblock %}
 
 {% block content %}
@@ -14,7 +14,6 @@
 <table class="table table-striped">
     <thead>
 	<tr>
-	    <th>#</th>
 	    <th>Date</th>
 	    <th>Out Temp</th>
 	    <th>Wind Speed</th>
@@ -23,10 +22,9 @@
     <tbody>
 	{% for data in plain_data %}
 	<tr>
-	    <td></td>
 	    <td>{{ data.time }}</td>
-	    <td>{{ data.outTemp|slice:":-7" }}</td>
-	    <td>{{ data.windSpeed|slice:":-4" }}</td>
+	    <td>{{ data.outTemp }}</td>
+	    <td>{{ data.windSpeed }}</td>
 	</tr>
 	{% endfor %}
     </tbody>
@@ -35,7 +33,7 @@
 <p>No weatherdata available.</p>
 {% endif %}
 
-<div id='container'> Chart will be rendered here </div>
+<div id='weatherchart-container'></div>
 
 {% endblock %}
 
