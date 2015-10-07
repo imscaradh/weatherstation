@@ -51,4 +51,6 @@ docs/_build/
 
 # Misc
 *.swp
+*.swo
 application.log
+
