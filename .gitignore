@@ -53,4 +53,5 @@ docs/_build/
 *.swp
 *.swo
 application.log
+db.sqlite3
 
