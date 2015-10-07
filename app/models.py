@@ -19,7 +19,7 @@ class Weatherdata(models.Model):
     dewpoint = models.CharField(max_length=100)
     humidity = models.CharField(max_length=100)
     insideHumidity = models.CharField(max_length=100)
-    barometer = models.CharField(max_length=100)
+    barometer = models.FloatField(max_length=100)
     barometerTrendDelta = models.CharField(max_length=100)
     barometerTrendData = models.CharField(max_length=100)
     windSpeed = models.FloatField(max_length=100)
