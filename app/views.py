@@ -14,10 +14,10 @@ def chartview(request):
     ds = DataPool(
        series=
         [{'options': {
-            'source': Weatherdata.objects.order_by('-time')[:20]},
+            'source': Weatherdata.objects.order_by('-time')[:10]},
           'terms': [
             ('time', lambda d: time.mktime(d.timetuple())),
-            'windSpeed']}
+            'outTemp']}
          ])
     cht = Chart(
         datasource = ds, 
@@ -27,7 +27,7 @@ def chartview(request):
               'stacking': False},
             'terms':{
               'time': [
-                'windSpeed']
+                'outTemp']
               }}],
         chart_options = 
           {'title': {

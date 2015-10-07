@@ -13,7 +13,7 @@ class Choice(models.Model):
 
 class Weatherdata(models.Model):
     time = models.DateTimeField(auto_now_add=True,primary_key=True)
-    outTemp = models.CharField(max_length=100)
+    outTemp = models.FloatField(max_length=100)
     windchill = models.CharField(max_length=100)
     heatIndex = models.CharField(max_length=100)
     dewpoint = models.CharField(max_length=100)
@@ -22,7 +22,7 @@ class Weatherdata(models.Model):
     barometer = models.CharField(max_length=100)
     barometerTrendDelta = models.CharField(max_length=100)
     barometerTrendData = models.CharField(max_length=100)
-    windSpeed = models.CharField(max_length=100)
+    windSpeed = models.FloatField(max_length=100)
     windDir = models.CharField(max_length=100)
     windDirText = models.CharField(max_length=100)
     windGust = models.CharField(max_length=100)
