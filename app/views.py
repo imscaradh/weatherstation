@@ -17,7 +17,7 @@ def chartview(request):
             'source': Weatherdata.objects.order_by('-time')[:20]},
           'terms': [
             ('time', lambda d: time.mktime(d.timetuple())),
-            'outTemp', 'windSpeed', 'barometer']}
+            'outTemp']}
          ])
     cht = Chart(
         datasource = ds, 
@@ -27,11 +27,11 @@ def chartview(request):
               'stacking': False},
             'terms':{
               'time': [
-                'outTemp','windSpeed','barometer']
+                'outTemp']
               }}],
         chart_options = 
           {'title': {
-               'text': 'Weather Data'},
+               'text': 'Temperature'},
            'xAxis': {
                 'title': {
                    'text': 'Date'}}},
