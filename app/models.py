@@ -1,9 +1,10 @@
 from django.db import models
 
-# Create your models here.
+
 class Question(models.Model):
     question_text = models.CharField(max_length=200)
     pub_date = models.DateTimeField('date published')
+
 
 class Choice(models.Model):
     question = models.ForeignKey(Question)
@@ -12,7 +13,7 @@ class Choice(models.Model):
 
 
 class Weatherdata(models.Model):
-    time = models.DateTimeField(auto_now_add=True,primary_key=True)
+    time = models.DateTimeField(auto_now_add=True, primary_key=True)
     outTemp = models.FloatField(max_length=100)
     windchill = models.CharField(max_length=100)
     heatIndex = models.CharField(max_length=100)
