@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models import Avg
 
 
 class Weatherdata(models.Model):
@@ -19,3 +20,9 @@ class Weatherdata(models.Model):
     windGustDir = models.FloatField()
     rainRate = models.FloatField()
     insideTemp = models.FloatField()
+
+
+def getLastDayByField(fieldName):
+    select_data = {"time": """strftime('%%Y-%%m-%%d %%H', time)"""}
+    results = Weatherdata.objects.extra(select=select_data).values('time').annotate(outTemp=Avg("outTemp"), rainRate=(Avg("barometer")))[:24]
+    return results
