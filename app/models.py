@@ -22,7 +22,11 @@ class Weatherdata(models.Model):
     insideTemp = models.FloatField()
 
 
-def getLastDayByField(fieldName):
+def getLastDayByCommonFields():
     select_data = {"time": """strftime('%%Y-%%m-%%d %%H', time)"""}
-    results = Weatherdata.objects.extra(select=select_data).values('time').annotate(outTemp=Avg("outTemp"), rainRate=(Avg("barometer")))[:24]
+    results = Weatherdata.objects.extra(select=select_data).values('time').annotate(
+        outTemp=Avg("outTemp"),
+        barometer=(Avg("barometer")),
+        rainrate=(Avg("rainRate"))
+    )[:24]
     return results

@@ -3,21 +3,23 @@ from rest_framework.decorators import api_view
 from chartit import DataPool, Chart
 import time
 from datetime import datetime
-from .models import Weatherdata, getLastDayByField
+from .models import Weatherdata, getLastDayByCommonFields
 from .serializers import WeatherdataTransformer
 
 
 def chartview(request):
     ds = DataPool(series=[{'options': {
-        'source': getLastDayByField("outTemp")},
-        'terms': [('time', lambda d: time.mktime(time.strptime(d, "%Y-%m-%d %H"))), 'outTemp', 'rainRate']}])
+        'source': getLastDayByCommonFields()},
+        'terms': [('time', lambda d: time.mktime(time.strptime(d, "%Y-%m-%d %H"))), 'outTemp', 'barometer', 'rainRate']}])
 
     cht = Chart(
         datasource=ds,
         series_options=[
             {'options': {'type': 'line', 'xAxis': 0, 'yAxis': 0, 'zIndex': 1},
                 'terms': {'time': ['outTemp']}},
-            {'options': {'type': 'area', 'xAxis': 1, 'yAxis': 1},
+            {'options': {'type': 'line', 'xAxis': 0, 'yAxis': 1},
+                'terms': {'time': ['barometer']}},
+            {'options': {'type': 'area', 'xAxis': 0, 'yAxis': 0},
                 'terms': {'time': ['rainRate']}}],
         chart_options={'title': {'text': 'Temperature'}, 'xAxis': {'title': {'text': 'Date'}}},
         x_sortf_mapf_mts=(None, lambda i: datetime.fromtimestamp(i).strftime("%d.%m %H:00"), False))
