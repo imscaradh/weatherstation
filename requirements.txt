@@ -1,4 +1,4 @@
 django
 djangorestframework
-django_chartit
+git+git://github.com/tschanzt/django-chartit.git#egg=django-chartit
 simplejson
