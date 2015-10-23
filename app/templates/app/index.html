@@ -10,31 +10,6 @@
     <h1>Charts</h1>
 </div>
 
-{% if plain_data %}
-<!--<table class="table table-striped">
-    <thead>
-	<tr>
-	    <th>Date</th>
-	    <th>Out Temp</th>
-	    <th>Wind Speed</th>
-	    <th>Rain</th>
-	</tr>
-    </thead>
-    <tbody>
-	{% for data in plain_data %}
-	<tr>
-	    <td>{{ data.time }}</td>
-	    <td>{{ data.outTemp }}</td>
-	    <td>{{ data.windSpeed }}</td>
-	    <td>{{ data.rainRate }}</td>
-	</tr>
-	{% endfor %}
-    </tbody>
-    </table>--> 
-{% else %}
-<p>No weatherdata available.</p>
-{% endif %}
-
 <div id='weatherchart-container'></div>
 
 {% endblock %}

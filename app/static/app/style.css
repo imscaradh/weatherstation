@@ -2,3 +2,13 @@ body {
     padding-top: 70px;
     padding-bottom: 30px;
 }
+
+.panel-login {
+    width: 370px;
+    margin: 0 auto;
+}
+
+.panel-login .input-group, 
+.panel-login .form-group {
+    margin-top:8px;
+}

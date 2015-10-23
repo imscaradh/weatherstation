@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="page-header">
+    <h1>Bye! You haven been logged out</h1>
+</div>
+
+<script>
+function redirect(){
+    window.location.href = "/app/";
+}
+
+setTimeout(redirect, 2000); 
+</script>
+
+{% endblock %}
