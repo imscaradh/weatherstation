@@ -1,5 +1,7 @@
 from django.db import models
 from django.db.models import Avg
+from django.contrib.auth.models import User
+from picklefield.fields import PickledObjectField
 
 
 class Weatherdata(models.Model):
@@ -30,3 +32,8 @@ def getDayByFields(fieldList):
 
     results = Weatherdata.objects.extra(select=select_data).values('time').annotate(**annotationList)[:24]
     return results
+
+
+class Profile(models.Model):
+    user = models.OneToOneField(User)
+    settings = PickledObjectField()

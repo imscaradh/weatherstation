@@ -2,3 +2,4 @@ django
 djangorestframework
 git+git://github.com/tschanzt/django-chartit.git#egg=django-chartit
 simplejson
+django-picklefield

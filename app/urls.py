@@ -9,4 +9,5 @@ urlpatterns = [
     url(r'^login/$', login, {'template_name': 'app/login.html'}),
     url(r'^logout/$', logout, {'template_name': 'app/logout.html'}),
     url(r'^weatherdata/$', views.weatherdata),
+    url(r'^submitsettings/$', views.update_settings),
 ]
