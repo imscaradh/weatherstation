@@ -1,4 +1,4 @@
-from django.shortcuts import render_to_response
+from django.shortcuts import render_to_response, redirect
 from django.template import RequestContext
 from django.contrib.auth.decorators import login_required
 from rest_framework.decorators import api_view
@@ -12,41 +12,68 @@ from forms import SettingsForm
 
 @login_required(login_url='/app/login')
 def chartview(request):
+    request.user.profile.settings = {
+        'daily': {'outTemp': True, 'barometer': True, 'windSpeed': True},
+        'monthly': {'outTemp': True, 'barometer': True, 'windSpeed': True}
+    }
+    request.user.profile.save()
     fields = request.user.profile.settings
-    form = SettingsForm(fields)
 
+    forms = {}
+    print(fields)
+    for i in fields:
+        forms[i] = SettingsForm(fields[i])
+
+    print(forms)
+    daily_chart = get_chart(fields['daily'], '%d.%m %H:00')
+    monthly_chart = get_chart(fields['monthly'], '%d.%m %H:00')
+    return render_to_response(
+        'app/index.html',
+        {
+            'daily': daily_chart,
+            'monthly': monthly_chart,
+            'forms': forms
+        },
+        context_instance=RequestContext(request)
+    )
+
+
+def get_chart(field_config, time_query):
     terms = [('time', lambda d: time.mktime(time.strptime(d, "%Y-%m-%d %H")))]
-    terms.extend(fields)
+    terms.extend(field_config)
 
     fieldList = []
     counter = 0
-    for name in fields:
-        if fields.get(name):
+    for name in field_config:
+        if field_config.get(name):
             fieldList.append(
                 {'options': {'type': 'area', 'xAxis': 0, 'yAxis': counter}, 'terms': {'time': [name]}}
             )
             counter = counter + 1
 
     ds = DataPool(series=[{'options': {
-        'source': getDayByFields(fields)},
+        'source': getDayByFields(field_config)},
         'terms': terms}])
 
     cht = Chart(
         datasource=ds,
         series_options=fieldList,
         chart_options={'title': {'text': 'Temperature'}, 'xAxis': {'title': {'text': 'Date'}}},
-        x_sortf_mapf_mts=(None, lambda i: datetime.fromtimestamp(i).strftime("%d.%m %H:00"), False))
+        x_sortf_mapf_mts=(None, lambda i: datetime.fromtimestamp(i).strftime(time_query), False))
+    return cht
 
-    return render_to_response('app/index.html', {'weatherchart': cht, 'settings_form': form}, context_instance=RequestContext(request))
 
-
-def update_settings(request):
+def save_settings(request):
     if request.method == 'POST':
         form = SettingsForm(request.POST)
         form.is_valid()
-        request.user.profile.settings = form.__dict__.get('cleaned_data')
+        form_data = form.__dict__.get('cleaned_data')
+        import pdb; pdb.set_trace()
+        key = form_data['chart_type']
+        form_data.pop(key)
+        request.user.profile.settings[key] = form_data
         request.user.profile.save()
-    return chartview(request)
+    return redirect('/app/')
 
 
 @api_view(['GET', 'POST'])
