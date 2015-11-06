@@ -12,27 +12,21 @@ from forms import SettingsForm
 
 @login_required(login_url='/app/login')
 def chartview(request):
-    request.user.profile.settings = {
-        'daily': {'outTemp': True, 'barometer': True, 'windSpeed': True},
-        'monthly': {'outTemp': True, 'barometer': True, 'windSpeed': True}
-    }
-    request.user.profile.save()
-    fields = request.user.profile.settings
+    # request.user.profile.settings = {
+    #     'active_fields': {'outTemp': True, 'barometer': False, 'rainRate': True}
+    # }
+    # request.user.profile.save()
+    user_settings = request.user.profile.settings
 
-    forms = {}
-    print(fields)
-    for i in fields:
-        forms[i] = SettingsForm(fields[i])
+    field_form = SettingsForm(user_settings['active_fields'])
 
-    print(forms)
-    daily_chart = get_chart(fields['daily'], '%d.%m %H:00')
-    monthly_chart = get_chart(fields['monthly'], '%d.%m %H:00')
+    daily_chart = get_chart(user_settings['active_fields'], '%d.%m %H:00')
+    monthly_chart = get_chart(user_settings['active_fields'], '%d.%m %H:00')
     return render_to_response(
         'app/index.html',
         {
-            'daily': daily_chart,
-            'monthly': monthly_chart,
-            'forms': forms
+            'charts': [daily_chart, monthly_chart],
+            'field_config': field_form
         },
         context_instance=RequestContext(request)
     )
@@ -49,7 +43,7 @@ def get_chart(field_config, time_query):
             fieldList.append(
                 {'options': {'type': 'area', 'xAxis': 0, 'yAxis': counter}, 'terms': {'time': [name]}}
             )
-            counter = counter + 1
+            counter += 1
 
     ds = DataPool(series=[{'options': {
         'source': getDayByFields(field_config)},
@@ -58,7 +52,11 @@ def get_chart(field_config, time_query):
     cht = Chart(
         datasource=ds,
         series_options=fieldList,
-        chart_options={'title': {'text': 'Temperature'}, 'xAxis': {'title': {'text': 'Date'}}},
+        chart_options={
+            'title': {'text': 'Temperature'},
+            'xAxis': {'title': {'text': 'Date'}},
+            'yAxis': {'opposite': False}
+        },
         x_sortf_mapf_mts=(None, lambda i: datetime.fromtimestamp(i).strftime(time_query), False))
     return cht
 
@@ -68,10 +66,7 @@ def save_settings(request):
         form = SettingsForm(request.POST)
         form.is_valid()
         form_data = form.__dict__.get('cleaned_data')
-        import pdb; pdb.set_trace()
-        key = form_data['chart_type']
-        form_data.pop(key)
-        request.user.profile.settings[key] = form_data
+        request.user.profile.settings['active_fields'] = form_data
         request.user.profile.save()
     return redirect('/app/')
 

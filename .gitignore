@@ -55,3 +55,7 @@ docs/_build/
 application.log
 db.sqlite3
 
+# PyCharm
+.idea
+*.iml
+

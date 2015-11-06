@@ -1,16 +1,24 @@
 {% extends "base.html" %}
 
 {% block customhead %}
-{% load chartit %}
-{{ daily|load_charts:"weatherchart-container" }}
+    {% load chartit %}
+    {{ charts|load_charts:"weatherchart-daily,weatherchart-monthly" }}
 {% endblock %}
 
 {% block content %}
-<div class="page-header">
-    <h1>Charts</h1>
-</div>
+    <div class="page-header">
+        <h1>Charts</h1>
+    </div>
 
-<div id='weatherchart-container'></div>
+    <div class="view">
+        <h2>Daily</h2>
+        <div id="weatherchart-daily" data-highcharts-chart="1"></div>
+    </div>
+
+    <div class="view">
+        <h2>Monthly</h2>
+        <div id="weatherchart-monthly"></div>
+    </div>
 
 {% endblock %}
 
