@@ -51,4 +51,11 @@ docs/_build/
 
 # Misc
 *.swp
+*.swo
 application.log
+db.sqlite3
+
+# PyCharm
+.idea
+*.iml
+

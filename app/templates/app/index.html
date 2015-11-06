@@ -1,39 +1,26 @@
 {% extends "base.html" %}
 
 {% block customhead %}
-{% load chartit %}
-{{ weatherchart|load_charts:"weatherchart-container" }}
+    {% load chartit %}
+    {{ charts|load_charts:"weatherchart-daily, weatherchart-monthly" }}
+{% load static %}
+<script src="{% static "app/charts_custom.js" %}"></script>
 {% endblock %}
 
 {% block content %}
-<div class="page-header">
-    <h1>Tables</h1>
-</div>
+    <div class="page-header">
+        <h1>Charts</h1>
+    </div>
 
-{% if plain_data %}
-<table class="table table-striped">
-    <thead>
-	<tr>
-	    <th>Date</th>
-	    <th>Out Temp</th>
-	    <th>Wind Speed</th>
-	</tr>
-    </thead>
-    <tbody>
-	{% for data in plain_data %}
-	<tr>
-	    <td>{{ data.time }}</td>
-	    <td>{{ data.outTemp }}</td>
-	    <td>{{ data.windSpeed }}</td>
-	</tr>
-	{% endfor %}
-    </tbody>
-</table>
-{% else %}
-<p>No weatherdata available.</p>
-{% endif %}
+    <div class="view">
+        <h2>Daily</h2>
+        <div id="weatherchart-daily" data-highcharts-chart="1"></div>
+    </div>
 
-<div id='weatherchart-container'></div>
+    <div class="view">
+        <h2>Monthly</h2>
+        <div id="weatherchart-monthly"></div>
+    </div>
 
 {% endblock %}
 
