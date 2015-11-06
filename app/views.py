@@ -9,6 +9,8 @@ from .models import getDayByFields
 from .serializers import WeatherdataTransformer
 from forms import SettingsForm
 
+visible = ['outTemp']
+
 
 @login_required(login_url='/app/login')
 def chartview(request):
@@ -41,7 +43,11 @@ def get_chart(field_config, time_query):
     for name in field_config:
         if field_config.get(name):
             fieldList.append(
-                {'options': {'type': 'area', 'xAxis': 0, 'yAxis': counter}, 'terms': {'time': [name]}}
+                {'options': {'type': 'area',
+                             'xAxis': 0,
+                             'yAxis': counter,
+                             'visible': (name in visible)},
+                 'terms': {'time': [name]}}
             )
             counter += 1
 
@@ -52,13 +58,10 @@ def get_chart(field_config, time_query):
     cht = Chart(
         datasource=ds,
         series_options=fieldList,
-        chart_options={
-            'title': {'text': 'Temperature'},
-            'xAxis': {'title': {'text': 'Date'}},
-            'yAxis': {'opposite': False}
-        },
-        x_sortf_mapf_mts=(None, lambda i: datetime.fromtimestamp(i).strftime(time_query), False))
-    return cht
+        chart_options={'title': {'text': 'Temperature'},
+                       'xAxis': {'title': {'text': 'Date'}}},
+        x_sortf_mapf_mts=(None, lambda i: datetime.fromtimestamp(i).strftime("%d.%m %H:00"), False))
+    return render_to_response('app/index.html', {'weatherchart': cht})
 
 
 def save_settings(request):

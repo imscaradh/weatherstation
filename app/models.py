@@ -29,7 +29,6 @@ def getDayByFields(fieldList):
     annotationList = {}
     for field in fieldList:
         annotationList[field] = Avg(field)
-
     results = Weatherdata.objects.extra(select=select_data).values('time').annotate(**annotationList)[:24]
     return results
 
