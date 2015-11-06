@@ -2,7 +2,7 @@
 
 {% block customhead %}
     {% load chartit %}
-    {{ charts|load_charts:"weatherchart-daily,weatherchart-monthly" }}
+    {{ charts|load_charts:"weatherchart-daily, weatherchart-monthly" }}
 {% load static %}
 <script src="{% static "app/charts_custom.js" %}"></script>
 {% endblock %}

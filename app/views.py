@@ -11,13 +11,12 @@ from forms import SettingsForm
 
 visible = ['outTemp']
 
-
 @login_required(login_url='/app/login')
 def chartview(request):
-    # request.user.profile.settings = {
-    #     'active_fields': {'outTemp': True, 'barometer': False, 'rainRate': True}
-    # }
-    # request.user.profile.save()
+    request.user.profile.settings = {
+        'active_fields': {'outTemp': True, 'barometer': False, 'rainRate': True}
+    }
+    request.user.profile.save()
     user_settings = request.user.profile.settings
 
     field_form = SettingsForm(user_settings['active_fields'])
@@ -61,7 +60,7 @@ def get_chart(field_config, time_query):
         chart_options={'title': {'text': 'Temperature'},
                        'xAxis': {'title': {'text': 'Date'}}},
         x_sortf_mapf_mts=(None, lambda i: datetime.fromtimestamp(i).strftime("%d.%m %H:00"), False))
-    return render_to_response('app/index.html', {'weatherchart': cht})
+    return cht
 
 
 def save_settings(request):
