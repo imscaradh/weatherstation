@@ -1,0 +1,85 @@
+body {
+  padding-top: 70px;
+  padding-bottom: 30px;
+}
+
+body.black {
+  @color1: black;
+  @color2: black;
+  @color3: black;
+  .theme();
+}
+
+body.green {
+  @color1: green;
+  @color2: green;
+  @color3: white;
+  .theme();
+}
+
+body.red {
+  @color1: red;
+  @color2: red;
+  @color3: white;
+  .theme();
+}
+
+body.blue {
+  @color1: blue;
+  @color2: blue;
+  @color3: white;
+  .theme();
+}
+
+h1 {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+h2 {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.panel-login {
+  width: 370px;
+  margin: 0 auto;
+}
+
+.view {
+  margin-bottom: 80px;
+}
+
+.panel-login .input-group,
+.panel-login .form-group {
+  margin-top: 8px;
+}
+
+.dropdown-toggle.user i {
+  margin-right: 5px;
+}
+
+.theme() {
+  .navbar-inverse {
+    color: @color1;
+  }
+
+  .navbar-inverse {
+    background: @color2;
+    border: none;
+  }
+
+  .navbar-inverse .navbar-nav > .active {
+    a, a:focus, a:hover {
+      background: @color2;
+      -webkit-box-shadow: none;
+      box-shadow: none;
+    }
+  }
+
+  .navbar-inverse .navbar-brand, .dropdown-toggle.user {
+    text-shadow: none;
+    color: @color3;
+  }
+
+}
