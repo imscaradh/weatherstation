@@ -5,8 +5,7 @@ from rest_framework.decorators import api_view
 from chartit import DataPool, Chart
 import time
 from datetime import datetime
-from .models import getDayByFields, Profile
-from .serializers import WeatherdataTransformer
+from .models import getDayByFields, Profile, Weatherdata
 from forms import SettingsForm
 
 visible = ['outTemp']
@@ -86,8 +85,9 @@ def save_settings(request):
     return redirect('/app/')
 
 
-@api_view(['GET', 'POST'])
+@api_view(['POST'])
 def weatherdata(request):
     json = request.data
     current = json.get("stats").get("current")
-    WeatherdataTransformer(data=current)
+    obj = Weatherdata(**current)
+    obj.save()

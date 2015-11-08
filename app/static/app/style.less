@@ -6,7 +6,7 @@ body {
 body.black {
   @color1: black;
   @color2: black;
-  @color3: black;
+  @color3: white;
   .theme();
 }
 
@@ -59,6 +59,12 @@ h2 {
   margin-right: 5px;
 }
 
+.modal-body {
+  ul {
+    list-style: none ;
+  }
+}
+
 .theme() {
   .navbar-inverse {
     color: @color1;
@@ -81,5 +87,4 @@ h2 {
     text-shadow: none;
     color: @color3;
   }
-
 }
