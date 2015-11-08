@@ -1,6 +1,10 @@
 body {
   padding-top: 70px;
   padding-bottom: 30px;
+  @color1: black;
+  @color2: black;
+  @color3: white;
+  .theme()
 }
 
 body.black {
@@ -32,7 +36,7 @@ body.blue {
 }
 
 h1 {
-  font-size: 18px;
+  font-size: 24px;
   font-weight: bold;
 }
 
@@ -47,7 +51,10 @@ h2 {
 }
 
 .view {
-  margin-bottom: 80px;
+  h2 {
+    margin-bottom: 30px;
+  }
+  margin-bottom: 120px;
 }
 
 .panel-login .input-group,

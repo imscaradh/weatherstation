@@ -67,7 +67,7 @@ def get_chart(field_config, time_query):
     cht = Chart(
         datasource=ds,
         series_options=fieldList,
-        chart_options={'title': {'text': 'Temperature'},
+        chart_options={'title': {'text': ' '},
                        'xAxis': {'title': {'text': 'Date'}}},
         x_sortf_mapf_mts=(None, lambda i: datetime.fromtimestamp(i).strftime("%d.%m %H:00"), False))
     return cht

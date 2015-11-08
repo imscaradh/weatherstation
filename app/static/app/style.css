@@ -2,6 +2,25 @@ body {
   padding-top: 70px;
   padding-bottom: 30px;
 }
+body .navbar-inverse {
+  color: black;
+}
+body .navbar-inverse {
+  background: black;
+  border: none;
+}
+body .navbar-inverse .navbar-nav > .active a,
+body .navbar-inverse .navbar-nav > .active a:focus,
+body .navbar-inverse .navbar-nav > .active a:hover {
+  background: black;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+body .navbar-inverse .navbar-brand,
+body .dropdown-toggle.user {
+  text-shadow: none;
+  color: white;
+}
 body.black .navbar-inverse {
   color: black;
 }
@@ -79,7 +98,7 @@ body.blue .dropdown-toggle.user {
   color: white;
 }
 h1 {
-  font-size: 18px;
+  font-size: 24px;
   font-weight: bold;
 }
 h2 {
@@ -91,7 +110,10 @@ h2 {
   margin: 0 auto;
 }
 .view {
-  margin-bottom: 80px;
+  margin-bottom: 120px;
+}
+.view h2 {
+  margin-bottom: 30px;
 }
 .panel-login .input-group,
 .panel-login .form-group {
