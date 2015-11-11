@@ -21,7 +21,7 @@
     {% block customhead %}{% endblock %}
 </head>
 
-<body role="document" class="{{ color }}">
+<body role="document" class="{{ request.session.color }}">
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
