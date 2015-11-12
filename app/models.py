@@ -13,23 +13,22 @@ class Weatherdata(models.Model):
     humidity = models.FloatField()
     insideHumidity = models.FloatField()
     barometer = models.FloatField()
-    barometerTrendDelta = models.FloatField()
     barometerTrendData = models.FloatField()
     windSpeed = models.FloatField()
     windDir = models.FloatField()
-    windDirText = models.FloatField()
     windGust = models.FloatField()
     windGustDir = models.FloatField()
     rainRate = models.FloatField()
     insideTemp = models.FloatField()
 
 
-def getDayByFields(fieldList):
-    select_data = {"time": """strftime('%%Y-%%m-%%d %%H', time)"""}
-    annotationList = {}
-    for field in fieldList:
-        annotationList[field] = Avg(field)
-    results = Weatherdata.objects.extra(select=select_data).values('time').annotate(**annotationList)[:24]
+def daterange_selection(field_list, date_format, count):
+    date_format_esc = date_format.replace('%', '%%')
+    select_data = {"time": "strftime('" + date_format_esc + "', time)"}
+    annotation_list = {}
+    for field in field_list:
+        annotation_list[field] = Avg(field)
+    results = Weatherdata.objects.extra(select=select_data).values('time').annotate(**annotation_list)[:count]
     return results
 
 

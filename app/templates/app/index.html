@@ -3,22 +3,24 @@
 {% block customhead %}
     {% load chartit %}
     {{ charts|load_charts:"weatherchart-daily, weatherchart-monthly" }}
-{% load static %}
-<script src="{% static "app/charts_custom.js" %}"></script>
+    {% load static %}
+    <script src="{% static "app/charts_custom.js" %}"></script>
 {% endblock %}
 
 {% block content %}
     <div class="page-header">
-        <h1>Charts</h1>
+        <h1>Weatherstation at Merligen, Switzerland <a href="/app/map"><i class="fa fa-map-marker"></i></a></h1>
     </div>
 
     <div class="view">
         <h2>Daily</h2>
-        <div id="weatherchart-daily" data-highcharts-chart="1"></div>
+
+        <div id="weatherchart-daily"></div>
     </div>
 
     <div class="view">
-        <h2>Monthly</h2>
+        <h2>Last 2 weeks</h2>
+
         <div id="weatherchart-monthly"></div>
     </div>
 
