@@ -2,98 +2,158 @@ body {
   padding-top: 70px;
   padding-bottom: 30px;
 }
-body .navbar-inverse {
+body .navbar {
   color: black;
-}
-body .navbar-inverse {
   background: black;
   border: none;
 }
-body .navbar-inverse .navbar-nav > .active a,
-body .navbar-inverse .navbar-nav > .active a:focus,
-body .navbar-inverse .navbar-nav > .active a:hover {
+body .navbar .navbar-nav .lang-selection {
+  margin-right: 40px;
+}
+body .navbar .navbar-nav .lang-selection form {
+  float: left;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+body .navbar .navbar-nav .lang-selection form input[type=submit] {
+  text-transform: uppercase;
+  background: none;
+  border: none;
+}
+body .navbar .navbar-nav > .active a,
+body .navbar .navbar-nav > .active a:focus,
+body .navbar .navbar-nav > .active a:hover {
   background: black;
   -webkit-box-shadow: none;
   box-shadow: none;
 }
-body .navbar-inverse .navbar-brand,
-body .dropdown-toggle.user {
+body .navbar .navbar-nav,
+body .navbar .navbar-brand,
+body .navbar .dropdown-toggle {
   text-shadow: none;
   color: white;
 }
-body.black .navbar-inverse {
+body.black .navbar {
   color: black;
-}
-body.black .navbar-inverse {
   background: black;
   border: none;
 }
-body.black .navbar-inverse .navbar-nav > .active a,
-body.black .navbar-inverse .navbar-nav > .active a:focus,
-body.black .navbar-inverse .navbar-nav > .active a:hover {
+body.black .navbar .navbar-nav .lang-selection {
+  margin-right: 40px;
+}
+body.black .navbar .navbar-nav .lang-selection form {
+  float: left;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+body.black .navbar .navbar-nav .lang-selection form input[type=submit] {
+  text-transform: uppercase;
+  background: none;
+  border: none;
+}
+body.black .navbar .navbar-nav > .active a,
+body.black .navbar .navbar-nav > .active a:focus,
+body.black .navbar .navbar-nav > .active a:hover {
   background: black;
   -webkit-box-shadow: none;
   box-shadow: none;
 }
-body.black .navbar-inverse .navbar-brand,
-body.black .dropdown-toggle.user {
+body.black .navbar .navbar-nav,
+body.black .navbar .navbar-brand,
+body.black .navbar .dropdown-toggle {
   text-shadow: none;
   color: white;
 }
-body.green .navbar-inverse {
+body.green .navbar {
   color: green;
-}
-body.green .navbar-inverse {
   background: green;
   border: none;
 }
-body.green .navbar-inverse .navbar-nav > .active a,
-body.green .navbar-inverse .navbar-nav > .active a:focus,
-body.green .navbar-inverse .navbar-nav > .active a:hover {
+body.green .navbar .navbar-nav .lang-selection {
+  margin-right: 40px;
+}
+body.green .navbar .navbar-nav .lang-selection form {
+  float: left;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+body.green .navbar .navbar-nav .lang-selection form input[type=submit] {
+  text-transform: uppercase;
+  background: none;
+  border: none;
+}
+body.green .navbar .navbar-nav > .active a,
+body.green .navbar .navbar-nav > .active a:focus,
+body.green .navbar .navbar-nav > .active a:hover {
   background: green;
   -webkit-box-shadow: none;
   box-shadow: none;
 }
-body.green .navbar-inverse .navbar-brand,
-body.green .dropdown-toggle.user {
+body.green .navbar .navbar-nav,
+body.green .navbar .navbar-brand,
+body.green .navbar .dropdown-toggle {
   text-shadow: none;
   color: white;
 }
-body.red .navbar-inverse {
+body.red .navbar {
   color: red;
-}
-body.red .navbar-inverse {
   background: red;
   border: none;
 }
-body.red .navbar-inverse .navbar-nav > .active a,
-body.red .navbar-inverse .navbar-nav > .active a:focus,
-body.red .navbar-inverse .navbar-nav > .active a:hover {
+body.red .navbar .navbar-nav .lang-selection {
+  margin-right: 40px;
+}
+body.red .navbar .navbar-nav .lang-selection form {
+  float: left;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+body.red .navbar .navbar-nav .lang-selection form input[type=submit] {
+  text-transform: uppercase;
+  background: none;
+  border: none;
+}
+body.red .navbar .navbar-nav > .active a,
+body.red .navbar .navbar-nav > .active a:focus,
+body.red .navbar .navbar-nav > .active a:hover {
   background: red;
   -webkit-box-shadow: none;
   box-shadow: none;
 }
-body.red .navbar-inverse .navbar-brand,
-body.red .dropdown-toggle.user {
+body.red .navbar .navbar-nav,
+body.red .navbar .navbar-brand,
+body.red .navbar .dropdown-toggle {
   text-shadow: none;
   color: white;
 }
-body.blue .navbar-inverse {
+body.blue .navbar {
   color: blue;
-}
-body.blue .navbar-inverse {
   background: blue;
   border: none;
 }
-body.blue .navbar-inverse .navbar-nav > .active a,
-body.blue .navbar-inverse .navbar-nav > .active a:focus,
-body.blue .navbar-inverse .navbar-nav > .active a:hover {
+body.blue .navbar .navbar-nav .lang-selection {
+  margin-right: 40px;
+}
+body.blue .navbar .navbar-nav .lang-selection form {
+  float: left;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+body.blue .navbar .navbar-nav .lang-selection form input[type=submit] {
+  text-transform: uppercase;
+  background: none;
+  border: none;
+}
+body.blue .navbar .navbar-nav > .active a,
+body.blue .navbar .navbar-nav > .active a:focus,
+body.blue .navbar .navbar-nav > .active a:hover {
   background: blue;
   -webkit-box-shadow: none;
   box-shadow: none;
 }
-body.blue .navbar-inverse .navbar-brand,
-body.blue .dropdown-toggle.user {
+body.blue .navbar .navbar-nav,
+body.blue .navbar .navbar-brand,
+body.blue .navbar .dropdown-toggle {
   text-shadow: none;
   color: white;
 }
@@ -123,5 +183,8 @@ h2 {
   margin-right: 5px;
 }
 .modal-body ul {
-  list-style: none ;
+  list-style: none;
+}
+svg > text {
+  display: none;
 }
