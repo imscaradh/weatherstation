@@ -8,8 +8,6 @@ from datetime import datetime
 from .models import daterange_selection, Profile, Weatherdata
 from forms import SettingsForm
 
-visible = ['outTemp']
-
 
 @login_required(login_url='/app/login')
 def chartview(request):
@@ -25,7 +23,6 @@ def chartview(request):
         request.user.profile.save()
 
     user_settings = request.user.profile.settings
-
     initial_values = dict(user_settings['config'])
     initial_values['color'] = user_settings['color']
     field_form = SettingsForm(initial_values)
@@ -56,7 +53,7 @@ def get_chart(field_config, time_query, count):
                 {'options': {'type': 'area',
                              'xAxis': 0,
                              'yAxis': counter,
-                             'visible': (name in visible)},
+                             'visible': (field_config.get(name))},
                  'terms': {'time': [name]}}
             )
             counter += 1
