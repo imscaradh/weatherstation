@@ -1,5 +1,4 @@
 $(function () {
-
     $('.highcharts-legend-item').click(function () {
         $('div[id^="weatherchart"]').each(function () {
             series = $(this).highcharts().series

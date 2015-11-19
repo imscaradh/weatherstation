@@ -1,16 +1,16 @@
 {% extends "base.html" %}
+{% load i18n %}
 
 {% block content %}
-<div class="page-header">
-    <h1>See you</h1>
-</div>
+    <div class="page-header">
+        <h1>{% trans "See you" %}</h1>
+    </div>
 
-<script>
-function redirect(){
-    window.location.href = "/app/";
-}
+    <script>
+        function redirect() {
+            window.location.href = "/app/";
+        }
 
-setTimeout(redirect, 2000); 
-</script>
-
+        setTimeout(redirect, 2000);
+    </script>
 {% endblock %}

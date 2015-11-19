@@ -7,6 +7,9 @@ import time
 from datetime import datetime
 from .models import daterange_selection, Profile, Weatherdata
 from forms import SettingsForm
+from django.utils.translation import ugettext as _
+
+visible = ['outTemp']
 
 
 @login_required(login_url='/app/login')
@@ -23,6 +26,7 @@ def chartview(request):
         request.user.profile.save()
 
     user_settings = request.user.profile.settings
+
     initial_values = dict(user_settings['config'])
     initial_values['color'] = user_settings['color']
     field_form = SettingsForm(initial_values)
@@ -45,11 +49,11 @@ def get_chart(field_config, time_query, count):
     terms = [('time', lambda d: time.mktime(time.strptime(d, "%Y-%m-%d %H")))]
     terms.extend(field_config)
 
-    fieldList = []
+    field_list = []
     counter = 0
     for name in field_config:
         if field_config.get(name):
-            fieldList.append(
+            field_list.append(
                 {'options': {'type': 'area',
                              'xAxis': 0,
                              'yAxis': counter,
@@ -64,9 +68,10 @@ def get_chart(field_config, time_query, count):
 
     cht = Chart(
         datasource=ds,
-        series_options=fieldList,
+        series_options=field_list,
         chart_options={'title': {'text': ' '},
-                       'xAxis': {'title': {'text': 'Date'}}},
+                       'xAxis': {'title': {'text': _("Date")}},
+                       'yAxis': [{'title': {'text': _(x)}} for x in field_config]},
         x_sortf_mapf_mts=(None, lambda i: datetime.fromtimestamp(i).strftime("%d.%m %H:00"), False))
     return cht
 

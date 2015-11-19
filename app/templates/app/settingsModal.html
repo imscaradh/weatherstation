@@ -1,24 +1,26 @@
+{% load i18n %}
+
 <div class="modal fade" id="settingsModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                         aria-hidden="true">&times;</span></button>
-                <h5 class="modal-title" id="myModalLabel">Settings</h5>
+                <h5 class="modal-title" id="myModalLabel">{% trans "Settings" %}</h5>
             </div>
             <form method="POST" action="/app/savesettings/">
                 {% csrf_token %}
                 <div class="modal-body">
 
-                    <h5>Field configuration</h5>
+                    <h5>{% trans "Field configuration" %}</h5>
                     <table>
                         {{ field_config }}
                     </table>
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Save changes</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">{% trans "Close" %}</button>
+                    <button type="submit" class="btn btn-primary">{% trans "Save changes" %}</button>
                 </div>
             </form>
         </div>
