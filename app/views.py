@@ -57,7 +57,7 @@ def get_chart(field_config, time_query, count):
                 {'options': {'type': 'area',
                              'xAxis': 0,
                              'yAxis': counter,
-                             'visible': (field_config.get(name))},
+                             'visible': True},
                  'terms': {'time': [name]}}
             )
         counter += 1
