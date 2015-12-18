@@ -60,7 +60,7 @@ def get_chart(field_config, time_query, count):
                              'visible': (field_config.get(name))},
                  'terms': {'time': [name]}}
             )
-            counter += 1
+        counter += 1
 
     ds = DataPool(series=[{'options': {
         'source': daterange_selection(field_config, time_query, count)},
