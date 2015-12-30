@@ -12,7 +12,7 @@ from django.utils.translation import ugettext as _
 visible = ['outTemp']
 
 
-@login_required(login_url='/app/login')
+@login_required(login_url='/app/login/')
 def chartview(request):
     try:
         request.user.profile

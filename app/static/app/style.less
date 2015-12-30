@@ -9,28 +9,28 @@ body {
 
 body.black {
   @color1: black;
-  @color2: black;
+  @color2: #404040;
   @color3: white;
   .theme();
 }
 
 body.green {
   @color1: green;
-  @color2: green;
+  @color2: #00a300;
   @color3: white;
   .theme();
 }
 
 body.red {
-  @color1: red;
-  @color2: red;
+  @color1: #ff7b59;
+  @color2: #650000;
   @color3: white;
   .theme();
 }
 
 body.blue {
-  @color1: blue;
-  @color2: blue;
+  @color1: #1133a0;
+  @color2: #0d1c54;
   @color3: white;
   .theme();
 }
@@ -74,11 +74,14 @@ h2 {
 
 .theme() {
   .navbar {
-    color: @color1;
-    background: @color2;
+    background: @color1;
     border: none;
 
     .navbar-nav {
+      .open > a {
+        background: @color2 !important;
+        box-shadow: none;
+      }
       .lang-selection {
         margin-right: 40px;
         form {
@@ -94,7 +97,7 @@ h2 {
       }
       & > .active {
         a, a:focus, a:hover {
-          background: @color2;
+          background: @color1;
           -webkit-box-shadow: none;
           box-shadow: none;
         }
@@ -108,6 +111,34 @@ h2 {
   }
 }
 
+.modal-body {
+  th {
+    padding-right: 26px;
+  }
+  #id_color {
+    padding-left: 0;
+    li {
+      float: left;
+      margin-right: 10px;
+    }
+  }
+
+  tr:last-child {
+    th, td {
+      padding-top: 30px;
+    }
+  }
+}
+
 svg > text {
   display: none;
+}
+
+i {
+  margin: 0 6px;
+}
+
+.btn, .btn:focus, .btn:hover {
+  border-radius: 0;
+  border: 1px solid #d7d7d7;
 }

@@ -11,12 +11,9 @@
             <form method="POST" action="/app/savesettings/">
                 {% csrf_token %}
                 <div class="modal-body">
-
-                    <h5>{% trans "Field configuration" %}</h5>
                     <table>
                         {{ field_config }}
                     </table>
-
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">{% trans "Close" %}</button>
