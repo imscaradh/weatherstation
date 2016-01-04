@@ -28,7 +28,8 @@ def daterange_selection(field_list, date_format, count):
     annotation_list = {}
     for field in field_list:
         annotation_list[field] = Avg(field)
-    results = Weatherdata.objects.extra(select=select_data).values('time').annotate(**annotation_list)[:count]
+    results = Weatherdata.objects.extra(select=select_data).values('time').annotate(**annotation_list).order_by(
+        '-time')[:count]
     return results
 
 

@@ -53,7 +53,7 @@ msgstr "Täglich"
 
 #: templates/app/index.html:24
 msgid "Last two weeks"
-msgstr "Letzte zwei Tage"
+msgstr "Letzte zwei Wochen"
 
 #: templates/app/login.html:14
 msgid "Your username and password didn't match. Please try again."
