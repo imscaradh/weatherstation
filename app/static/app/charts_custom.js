@@ -28,4 +28,7 @@ $(function () {
             return this.x + ': <br><b>' + Highcharts.numberFormat(this.y, 2) + '</b>';
         }
     });
+
+    $('#multiselect').multiselect();
+
 });
