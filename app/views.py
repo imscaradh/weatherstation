@@ -20,28 +20,26 @@ def chartview(request):
         init_profile = Profile()
         init_profile.user = request.user
         request.user.profile.settings = {
-            'config': {'outTemp': True, 'barometer': False, 'rainRate': True},
+            'fields': {'outTemp', 'barometer', 'rainRate'},
             'color': 'black',
         }
         request.user.profile.save()
 
     user_settings = request.user.profile.settings
 
-    initial_values = dict(user_settings['config'])
-    initial_values['color'] = user_settings['color']
-    field_form = SettingsForm(initial_values)
+    field_form = SettingsForm(user_settings)
 
     request.session['color'] = user_settings['color']
 
-    daily_chart = get_chart(user_settings['config'], '%Y-%m-%d %H', 24)
-    lasttwoweeks_chart = get_chart(user_settings['config'], '%Y-%m-%d 00', 14)
+    daily_chart = get_chart(user_settings['fields'], '%Y-%m-%d %H', 24)
+    lasttwoweeks_chart = get_chart(user_settings['fields'], '%Y-%m-%d 00', 14)
     return render_to_response(
-        'app/index.html',
-        {
-            'charts': [daily_chart, lasttwoweeks_chart],
-            'field_config': field_form,
-        },
-        context_instance=RequestContext(request)
+            'app/index.html',
+            {
+                'charts': [daily_chart, lasttwoweeks_chart],
+                'field_config': field_form,
+            },
+            context_instance=RequestContext(request)
     )
 
 
@@ -52,14 +50,13 @@ def get_chart(field_config, time_query, count):
     field_list = []
     counter = 0
     for name in field_config:
-        if field_config.get(name):
-            field_list.append(
+        field_list.append(
                 {'options': {'type': 'area',
                              'xAxis': 0,
                              'yAxis': counter,
                              'visible': True},
-                 'terms': {'time': [name]}}
-            )
+                 'terms': {'time': [name]}})
+
         counter += 1
 
     ds = DataPool(series=[{'options': {
@@ -67,12 +64,12 @@ def get_chart(field_config, time_query, count):
         'terms': terms}])
 
     cht = Chart(
-        datasource=ds,
-        series_options=field_list,
-        chart_options={'title': {'text': ' '},
-                       'xAxis': {'title': {'text': _("Date")}},
-                       'yAxis': [{'title': {'text': _(x)}} for x in field_config]},
-        x_sortf_mapf_mts=(None, lambda i: datetime.fromtimestamp(i).strftime("%d.%m %H:00"), False))
+            datasource=ds,
+            series_options=field_list,
+            chart_options={'title': {'text': ' '},
+                           'xAxis': {'title': {'text': _("Date")}},
+                           'yAxis': [{'title': {'text': _(x)}} for x in field_config]},
+            x_sortf_mapf_mts=(None, lambda i: datetime.fromtimestamp(i).strftime("%d.%m %H:00"), False))
     return cht
 
 
@@ -83,7 +80,7 @@ def save_settings(request):
         form_data = form.__dict__.get('cleaned_data')
         request.user.profile.settings['color'] = form_data['color']
         form_data.pop('color')
-        request.user.profile.settings['config'] = form_data
+        request.user.profile.settings['fields'] = form_data['fields']
         request.user.profile.save()
     return redirect('/app/')
 

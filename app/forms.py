@@ -1,14 +1,26 @@
 from django import forms
 from django.utils.translation import ugettext_lazy as _
 
-CHOICES = (('green', _('Green')),
-           ('blue', _('Blue')),
-           ('red', _('Red')),
-           ('black', _('Black')))
+COLORS = (
+    ('green', _('Green')),
+    ('blue', _('Blue')),
+    ('red', _('Red')),
+    ('black', _('Black'))
+)
+
+FIELDS = (
+    ("outTemp", _('Out temp')),
+    ("barometer", _('Barometer')),
+    ("rainRate", _('Rain rate')),
+    ("humidity", _('Humidity')),
+    ("windSpeed", _('Wind speed')),
+    ("insideTemp", _('Inside temp')),
+    ("windchill", _('Wind chill')),
+    ("insideHumidity", _('Inside humidity'))
+)
 
 
 class SettingsForm(forms.Form):
-    outTemp = forms.BooleanField(required=False, label=_('Out temp'))
-    barometer = forms.BooleanField(required=False, label=_('Barometer'))
-    rainRate = forms.BooleanField(required=False, label=_('Rain rate'))
-    color = forms.ChoiceField(choices=CHOICES, widget=forms.RadioSelect(), required=False, label=_('Color'))
+    fields = forms.MultipleChoiceField(widget=forms.SelectMultiple, required=False, choices=FIELDS,
+                                       label=_('Field configuration'))
+    color = forms.ChoiceField(choices=COLORS, widget=forms.RadioSelect(), required=False, label=_('Color'))
