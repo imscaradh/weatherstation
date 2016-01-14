@@ -9,7 +9,6 @@ urlpatterns = [
     url(r'^login/$', login, {'template_name': 'app/login.html'}),
     url(r'^logout/$', logout, {'template_name': 'app/logout.html'}),
     url(r'^map/$', TemplateView.as_view(template_name='app/map.html')),
-    url(r'^about/$', TemplateView.as_view(template_name='app/about.html')),
     url(r'^weatherdata/$', views.weatherdata),
     url(r'^savesettings/$', views.save_settings),
     url(r'^i18n/', include('django.conf.urls.i18n')),
