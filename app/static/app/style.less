@@ -1,41 +1,26 @@
 body {
   padding-top: 70px;
   padding-bottom: 30px;
-  @color1: black;
-  @color2: black;
-  @color3: white;
-  .theme()
+  .theme(black, black, white)
 }
 
 body.black {
-  @color1: black;
-  @color2: #404040;
-  @color3: white;
-  .theme();
+  .theme(black, #404040, white);
 }
 
 body.green {
-  @color1: green;
-  @color2: #00a300;
-  @color3: white;
-  .theme();
+  .theme(green, #00a300, white);
 }
 
 body.red {
-  @color1: #ff7b59;
-  @color2: #650000;
-  @color3: white;
-  .theme();
+  .theme(#ff7b59, #650000, white);
 }
 
 body.blue {
-  @color1: #1133a0;
-  @color2: #0d1c54;
-  @color3: white;
-  .theme();
+  .theme(#1133a0, #0d1c54, white);
 }
 
-.theme() {
+.theme(@color1, @color2, @color3) {
   .btn-primary {
     background: @color1;
 
