@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "rd-loading.js",
+  "sourceRoot": "",
+  "sources": [
+    "rd-loading.ts"
+  ],
+  "names": [],
+  "mappings": ";;;;;;;;;;;;;;;;;;gBAMA;gBAEA,CAAC;gBAFY,SAAS;oBAJrB,gBAAS,CAAC;wBACT,QAAQ,EAAE,YAAY;wBACtB,WAAW,EAAE,2CAA2C;qBACzD,CAAC;mBACW,SAAS,CAErB;gBAAD,gBAAC;aAAA,AAFD;;QAGA,CAAC"
+}

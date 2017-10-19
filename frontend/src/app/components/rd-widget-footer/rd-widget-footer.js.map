@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "rd-widget-footer.js",
+  "sourceRoot": "",
+  "sources": [
+    "rd-widget-footer.ts"
+  ],
+  "names": [],
+  "mappings": ";;;;;;;;;;;;;;;;;;gBAMA;gBACA,CAAC;gBADY,cAAc;oBAJ1B,gBAAS,CAAC;wBACP,QAAQ,EAAE,kBAAkB;wBAC5B,WAAW,EAAE,uDAAuD;qBACvE,CAAC;mBACW,cAAc,CAC1B;gBAAD,qBAAC;aAAA,AADD;;QAEA,CAAC"
+}

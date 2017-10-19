@@ -1,0 +1,17 @@
+version: '2'
+services:
+  backend:
+    restart: always
+    build: backend
+    container_name: weather_backend
+#    ports:
+#      - "127.0.0.1:5000:5000"
+
+  frontend:
+    restart: always
+    build: frontend
+    container_name: weather_frontend
+    links:
+      - backend
+    ports:
+      - "127.0.0.1:8000:80"

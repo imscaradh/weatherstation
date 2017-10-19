@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "rd-widget.js",
+  "sourceRoot": "",
+  "sources": [
+    "rd-widget.ts"
+  ],
+  "names": [],
+  "mappings": ";;;;;;;;;;;;;;;;;;gBAKA;gBACA,CAAC;gBADY,QAAQ;oBAJpB,gBAAS,CAAC;wBACT,QAAQ,EAAE,WAAW;wBACrB,WAAW,EAAE,yCAAyC;qBACvD,CAAC;mBACW,QAAQ,CACpB;gBAAD,eAAC;aAAA,AADD;;QAEA,CAAC"
+}

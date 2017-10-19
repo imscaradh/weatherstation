@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "server-list-view.js",
+  "sourceRoot": "",
+  "sources": [
+    "server-list-view.ts"
+  ],
+  "names": [],
+  "mappings": ";;;;;;;;;;;;;;;;;;;;;gBAWI;oBACI,IAAI,CAAC,KAAK,GAAG,EAAE,CAAC;gBACpB,CAAC;gBANQ,cAAc;oBAL1B,gBAAS,CAAC;wBACP,QAAQ,EAAE,kBAAkB;wBAC5B,UAAU,EAAE,CAAC,OAAO,CAAC;wBACrB,WAAW,EAAE,uDAAuD;qBACvE,CAAC;;mBACW,cAAc,CAO1B;gBAAD,qBAAC;aAAA,AAPD;;QAQA,CAAC"
+}

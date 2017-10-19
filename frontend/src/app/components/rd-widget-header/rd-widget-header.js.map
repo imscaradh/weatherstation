@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "rd-widget-header.js",
+  "sourceRoot": "",
+  "sources": [
+    "rd-widget-header.ts"
+  ],
+  "names": [],
+  "mappings": ";;;;;;;;;;;;;;;;;;;;;gBAaI;oBACI,IAAI,CAAC,KAAK,GAAG,EAAE,CAAC;oBAChB,IAAI,CAAC,IAAI,GAAG,EAAE,CAAC;gBACnB,CAAC;gBARD;oBADC,YAAK,EAAE;;6DACK;gBAGb;oBADC,YAAK,EAAE;;4DACI;gBALH,cAAc;oBAJ1B,gBAAS,CAAC;wBACP,QAAQ,EAAE,kBAAkB;wBAC5B,WAAW,EAAE,uDAAuD;qBACvE,CAAC;;mBACW,cAAc,CAW1B;gBAAD,qBAAC;aAAA,AAXD;;QAYA,CAAC"
+}
