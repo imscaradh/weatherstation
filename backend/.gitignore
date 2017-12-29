@@ -102,3 +102,4 @@ venv.bak/
 .mypy_cache/
 
 application.db
+database.db
