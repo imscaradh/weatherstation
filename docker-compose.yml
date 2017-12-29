@@ -4,8 +4,8 @@ services:
     restart: always
     build: backend
     container_name: weather_backend
-#    ports:
-#      - "127.0.0.1:5000:5000"
+    ports:
+      - "127.0.0.1:5000:5000"
 
   frontend:
     restart: always

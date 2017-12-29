@@ -1,9 +1,0 @@
-<div class="row alerts-container" *ngIf="alerts?.length > 0">
-    <div class="col-xs-12">
-        <div class="alert alert-{{alert.type}}" *ngFor="let alert of alerts; let i = index" role="alert">
-            <button type="button" (click)="closeAlert(i)" class="close" aria-label="Close"><span
-                aria-hidden="true">&times;</span></button>
-            {{alert.msg}}
-        </div>
-    </div>
-</div>

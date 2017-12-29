@@ -1,12 +1,19 @@
-import {enableProdMode} from '@angular/core';
-import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
+import {Aurelia, PLATFORM} from 'aurelia-framework';
 
-import {AppModule} from './app/app.module';
-import {environment} from './environments/environment';
 
-if (environment.production) {
-    enableProdMode();
+export function configure(aurelia: Aurelia) {
+    const env = process.env.NODE_ENV !== 'production' ? 'development' : 'production';
+    console.log(`Using ${env} configurations...`);
+
+    // Configure Aurelia
+    if (env === 'development') {
+        aurelia.use.developmentLogging();
+    }
+
+    aurelia.use
+        .standardConfiguration()
+        .plugin(PLATFORM.moduleName('aurelia-validation'));
+
+    // Starting up the Aurelia application
+    aurelia.start().then(() => aurelia.setRoot(PLATFORM.moduleName('app')));
 }
-
-platformBrowserDynamic().bootstrapModule(AppModule)
-    .catch(err => console.log(err));

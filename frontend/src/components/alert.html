@@ -1,0 +1,13 @@
+<template>
+  <div class="alert-container">
+    <div repeat.for="entry of entries">
+      <div class="alert alert-${entry.severity} alert-dismissible fade show" role="alert" ref="entry.element">
+        <div class="title">${entry.title}</div>
+        <div class="content">${entry.content}</div>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</template>

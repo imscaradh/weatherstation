@@ -1,0 +1,33 @@
+<template>
+  <require from="../components/card"></require>
+  <require from="../components/grid"></require>
+
+  <div class="heading">
+    <h3>Aktuelle Werte</h3>
+  </div>
+
+  <div class="row">
+    <div class="col-md">
+      <card icon-name="flag" value="${currentData.windSpeed} km/h" caption="Windgeschwindigkeit"></card>
+    </div>
+    <div class="col-md">
+      <card icon-name="bandcamp" value="${currentData.windDir}°" caption="Windrichtung"></card>
+    </div>
+    <div class="col-md">
+      <card icon-name="thermometer-empty" value="${currentData.outTemp} °C" caption="Temperatur"></card>
+    </div>
+    <div class="col-md">
+      <card icon-name="tint" value="${currentData.rain} mm" caption="Regenmenge"></card>
+    </div>
+  </div>
+
+  <div class="heading">
+    <h3>Verlauf</h3>
+  </div>
+
+  <div class="row">
+    <div class="col-md">
+      <grid grid-data.bind="historyData"></grid>
+    </div>
+  </div>
+</template>

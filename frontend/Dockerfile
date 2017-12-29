@@ -3,17 +3,17 @@ COPY package.json ./
 RUN npm set progress=false && npm config set depth 0 && npm cache clean --force
 
 ## Storing node modules on a separate layer will prevent unnecessary npm installs at each build
-RUN npm i && mkdir /ng-app && cp -R ./node_modules ./ng-app
+RUN npm i && mkdir /app && cp -R ./node_modules ./app
 
-WORKDIR /ng-app
-COPY . .
+WORKDIR /app
+COPY . /app
 
 ## Build the angular app in production mode and store the artifacts in dist folder
-RUN $(npm bin)/ng build --prod --build-optimizer
+RUN npm run build
 
 FROM nginx
-COPY --from=builder /ng-app/dist /usr/share/nginx/html
-COPY nginx/default.conf /etc/nginx/conf.d/default.conf.template
+COPY --from=builder /app/dist /usr/share/nginx/html
+COPY nginx.conf /etc/nginx/conf.d/default.conf.template
 RUN chown -R nginx /etc/nginx
 
 EXPOSE 80

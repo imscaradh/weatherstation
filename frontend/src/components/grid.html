@@ -1,0 +1,25 @@
+<template>
+  <div class="grid">
+    <div class="grid-head">
+      <i class="fa fa-archive"></i>
+      <span>Titel</span>
+    </div>
+    <div class="grid-body">
+      <div if.bind="gridData.length == 0">
+        Laden...
+      </div>
+      <table if.bind="gridData.length > 0" class="table table-hover" ref="tableComponent">
+        <thead class="thead-dark">
+        <tr>
+          <th scope="col" repeat.for="headVal of getHeader()">${headVal}</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr repeat.for="dataVal of getData()">
+          <td repeat.for="val of dataVal">${val}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</template>

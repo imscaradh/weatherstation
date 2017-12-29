@@ -1,19 +1,20 @@
 {
-  "compileOnSave": false,
+  "compileOnSave": true,
   "compilerOptions": {
-    "outDir": "./dist/out-tsc",
-    "sourceMap": true,
-    "declaration": false,
-    "moduleResolution": "node",
+    "target": "es5",
+    "module": "esnext",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "target": "es5",
-    "typeRoots": [
-      "node_modules/@types"
-    ],
+    "moduleResolution": "node",
+    "allowJs": true,
     "lib": [
       "es2017",
       "dom"
     ]
-  }
+  },
+  "exclude": [
+    "node_modules",
+    "dist",
+    "webpack.config.js"
+  ]
 }

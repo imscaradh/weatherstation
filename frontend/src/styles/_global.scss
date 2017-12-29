@@ -1,0 +1,38 @@
+// Global styling for this template
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    overflow-x: hidden;
+    background-color: $gray-200;
+}
+
+.heading {
+    margin: 40px 10px 30px 10px;
+    border-bottom: 1px solid $gray-100;
+
+    h1 {
+
+    }
+
+    h2 {
+
+    }
+
+    h3 {
+
+    }
+}
+
+.container {
+    min-height: calc(100vh - 56px);
+    margin-top: $navbar-base-height;
+    padding: 15px;
+
+    @media #{$desktop} {
+        max-width: 90%;
+    }
+}
