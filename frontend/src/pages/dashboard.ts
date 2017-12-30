@@ -42,7 +42,7 @@ export class Dashboard {
 
                 data.forEach(v => {
                     this.historyData.push([
-                        v["timestamp"],
+                        Utils.dateFormatter(v["timestamp"], "DD.MM.YY HH:mm:ss"),
                         Utils.floatFormatter(v["pressure"], 2),
                         Utils.floatFormatter(v["outTemp"]),
                         this.getCompassWinddir(v["windDir"]),
