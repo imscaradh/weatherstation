@@ -73,9 +73,9 @@ def init_db(app):
     db.app = app
     db.init_app(app)
     db.create_all()
+    setup_api_user()
 
     if app.config["SQLALCHEMY_BOOTSTRAP_DATA"]:
-        setup_api_user()
         import_from_json()
 
     return db
