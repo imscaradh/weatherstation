@@ -17,6 +17,5 @@ COPY nginx.conf /etc/nginx/conf.d/default.conf.template
 RUN chown -R nginx /etc/nginx
 
 EXPOSE 80
-CMD ["/bin/sh","-c",\
-"cp /etc/nginx/conf.d/default.conf.template \
- /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"]
+CMD ["/bin/sh" ,"-c", "cp /etc/nginx/conf.d/default.conf.template /etc/nginx/conf.d/default.conf && \
+                        nginx -g 'daemon off;'"]
