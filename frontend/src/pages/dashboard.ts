@@ -5,6 +5,8 @@ import {Utils} from "../common/utils";
 
 @autoinject()
 export class Dashboard {
+    private getCompassWinddir = Utils.getCompassWinddir;
+
 
     private currentData: any[] = [];
     private historyData: any[] = [];
@@ -45,7 +47,7 @@ export class Dashboard {
                         Utils.dateFormatter(v["timestamp"], "DD.MM.YY HH:mm:ss"),
                         Utils.floatFormatter(v["pressure"], 2),
                         Utils.floatFormatter(v["outTemp"]),
-                        this.getCompassWinddir(v["windDir"]),
+                        Utils.getCompassWinddir(v["windDir"]),
                         Utils.floatFormatter(v["windSpeed"]),
                         Utils.floatFormatter(v["outHumidity"]),
                         Utils.floatFormatter(v["rain"], 2)
@@ -54,14 +56,5 @@ export class Dashboard {
             });
     }
 
-    private getCompassWinddir(degree: number) {
-        const bearings = ["NE", "E", "SE", "S", "SW", "W", "NW", "N"];
 
-        let index = degree - 22.5;
-        if (index < 0)
-            index += 360;
-        index = Math.floor(index / 45);
-
-        return (bearings[index]);
-    }
 }

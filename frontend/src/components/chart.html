@@ -1,5 +1,12 @@
 <template>
   <div class="chart">
+    <div if.bind="title" class="chart-head">
+      <i class="fa fa-archive"></i>
+      <span>${title}</span>
+    </div>
 
+    <div class="chart-body">
+      <canvas ref="chartDom"></canvas>
+    </div>
   </div>
 </template>

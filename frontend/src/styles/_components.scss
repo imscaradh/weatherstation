@@ -1,4 +1,4 @@
-.card, .grid {
+.card, .grid, .chart {
     background-color: white;
     border: 1px solid $gray-500;
 }
@@ -39,13 +39,27 @@
 
 // Grid component
 .grid {
-
     .grid-head {
         padding: $spacing;
     }
     .grid-body {
         thead tr {
             line-height: 0.5rem;
+        }
+    }
+}
+
+.chart {
+    .chart-head {
+        padding: $spacing;
+    }
+
+    .chart-body {
+        margin: 30px;
+
+        canvas {
+            //width: 100% !important;
+            //height: auto !important;
         }
     }
 }

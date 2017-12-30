@@ -1,0 +1,19 @@
+<template>
+  <require from="../components/chart"></require>
+  <require from="../common/number-format"></require>
+  <require from="../common/date-format"></require>
+
+  <div class="heading">
+    <h3>Charts</h3>
+  </div>
+
+  <div class="row">
+    <div class="col-md">
+      <chart series-data.bind="tempData" col="outTemp" lbl-Y="Temperatur"></chart>
+    </div>
+    <div class="col-md">
+       <chart series-data.bind="tempData" col="windSpeed" lbl-Y="Windgeschwindigkeit"></chart>
+    </div>
+  </div>
+
+</template>

@@ -10,4 +10,15 @@ export class Utils {
     public static dateFormatter(val: any, format) {
         return moment(val).format(format);
     }
+
+    public static getCompassWinddir(degree: number) {
+        const bearings = ["NE", "E", "SE", "S", "SW", "W", "NW", "N"];
+
+        let index = degree - 22.5;
+        if (index < 0)
+            index += 360;
+        index = Math.floor(index / 45);
+
+        return (bearings[index]);
+    }
 }

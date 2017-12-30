@@ -21,6 +21,13 @@ export class App {
                 title: 'Dashboard',
                 moduleId: PLATFORM.moduleName('pages/dashboard'),
                 nav: true
+            },
+            {
+                name: 'charts',
+                route: 'charts',
+                title: 'Charts',
+                moduleId: PLATFORM.moduleName('pages/charts'),
+                nav: true
             }
         ]);
 
