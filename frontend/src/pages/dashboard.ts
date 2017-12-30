@@ -31,12 +31,13 @@ export class Dashboard {
             .then(response => response.json())
             .then(data => {
                 this.historyData.push([
-                    "Timestamp",
-                    "Pressure",
-                    "Temp", "Wind dir",
-                    "Wind speed",
-                    "Humidity",
-                    "Rain"
+                    "Zeit",
+                    "Luftdruck",
+                    "Aussentemp.",
+                    "Windrichtung",
+                    "Windgeschwindigkeit",
+                    "Luftfeuchtigkeit",
+                    "Regenmenge"
                 ]);
 
                 data.forEach(v => {
@@ -44,12 +45,23 @@ export class Dashboard {
                         v["timestamp"],
                         Utils.floatFormatter(v["pressure"], 2),
                         Utils.floatFormatter(v["outTemp"]),
-                        Utils.floatFormatter(v["windDir"], 0),
+                        this.getCompassWinddir(v["windDir"]),
                         Utils.floatFormatter(v["windSpeed"]),
                         Utils.floatFormatter(v["outHumidity"]),
                         Utils.floatFormatter(v["rain"], 2)
                     ]);
                 });
             });
+    }
+
+    private getCompassWinddir(degree: number) {
+        const bearings = ["NE", "E", "SE", "S", "SW", "W", "NW", "N"];
+
+        let index = degree - 22.5;
+        if (index < 0)
+            index += 360;
+        index = Math.floor(index / 45);
+
+        return (bearings[index]);
     }
 }

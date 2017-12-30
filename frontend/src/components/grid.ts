@@ -4,6 +4,7 @@ import {autoinject, bindable} from 'aurelia-framework';
 @autoinject()
 export class Grid {
 
+    @bindable title: string;
     @bindable gridData: any[] = [];
     private tableComponent: any;
 

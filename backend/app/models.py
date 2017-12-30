@@ -41,7 +41,7 @@ class Weather(db.Model):
         db.session.commit()
 
 
-def get_weather_history(pages=100):
+def get_weather_history(pages=10):
     weather_history = []
 
     query = db.session.query(Weather).order_by(desc(Weather.timestamp)).limit(pages)

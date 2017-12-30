@@ -2,10 +2,10 @@
   <div class="grid">
     <div class="grid-head">
       <i class="fa fa-archive"></i>
-      <span>Titel</span>
+      <span>${title}</span>
     </div>
     <div class="grid-body">
-      <div if.bind="gridData.length == 0">
+      <div class="loading" if.bind="gridData.length == 0">
         Laden...
       </div>
       <table if.bind="gridData.length > 0" class="table table-hover" ref="tableComponent">
