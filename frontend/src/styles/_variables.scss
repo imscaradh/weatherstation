@@ -29,9 +29,9 @@ $spacing: 20px;
 
 // Device Variables
 $mobile-max-width: 480px;
+$tablet-max-width: 1150px;
 
 $tablet-min-width: $mobile-max-width + 1;
-$tablet-max-width: 1100px;
 $desktop-min-width: $tablet-max-width + 1;
 
 // Media queries

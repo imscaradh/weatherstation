@@ -1,3 +1,18 @@
 nav {
     height: $navbar-base-height;
+
+    @media #{$mobile} {
+        .navbar-collapse {
+            background: black;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: $navbar-base-height;
+
+            li {
+                padding: $spacing;
+                text-align: center;
+            }
+        }
+    }
 }

@@ -1,12 +1,15 @@
 import {autoinject, PLATFORM} from 'aurelia-framework';
 import {Router, RouterConfiguration} from 'aurelia-router';
 import {Alert} from './components/alert';
+import * as $ from "jquery";
 
 @autoinject()
 export class App {
     public router: Router;
     public alerts: Alert;
     public globalVars: any = {};
+
+    private navbarToggler: any;
 
     constructor() {
     }
@@ -32,5 +35,10 @@ export class App {
         ]);
 
         this.router = router;
+    }
+
+    navigationChanged(href: any) {
+        $(this.navbarToggler).click();
+        window.location.href = href;
     }
 }

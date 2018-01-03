@@ -1,6 +1,10 @@
 .card, .grid, .chart {
     background-color: white;
     border: 1px solid $gray-500;
+
+    @media #{$mobile}, #{$tablet} {
+        margin-bottom: $spacing;
+    }
 }
 
 // Card component
@@ -18,13 +22,20 @@
 
     .card-icon, .card-body {
         height: 100%;
-        padding: $spacing;
+        padding: $spacing / 2;
     }
 
     .card-icon {
+        @media #{$mobile} {
+            width: 80px;
+        }
         &:before {
             font-family: "FontAwesome", serif;
             font-size: 60px !important;
+
+            @media #{$tablet} {
+                font-size: 20px !important;
+            }
         }
 
     }
@@ -33,11 +44,11 @@
         h4 {
             font-size: 40px;
             font-weight: bold;
-        }
-    }
 
-    @media #{$mobile} {
-        margin-bottom: 10px;
+            @media #{$mobile}, #{$tablet} {
+                font-size: 30px;
+            }
+        }
     }
 }
 
@@ -65,6 +76,10 @@
     }
 
     .chart-body {
-        margin: 30px;
+        margin: 1.5 * $spacing;
+
+        @media #{$mobile} {
+            margin: $spacing/3;
+        }
     }
 }
