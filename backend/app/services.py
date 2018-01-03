@@ -2,7 +2,7 @@ from app.models import Weather, db
 from sqlalchemy import desc, func
 
 
-def get_weather_history(pages=30):
+def get_weather_history(pages=240):
     weather_history = []
 
     fields = ["timestamp", "inTemp", "outTemp", "inHumidity", "outHumidity", "rain", "windDir", "windSpeed", "pressure"]
