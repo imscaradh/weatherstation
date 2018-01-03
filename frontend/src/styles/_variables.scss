@@ -35,6 +35,6 @@ $tablet-max-width: 1100px;
 $desktop-min-width: $tablet-max-width + 1;
 
 // Media queries
-$tablet: "only screen and (max-width:" + $tablet-max-width + ")";
+$mobile: "only screen and (max-width:" + $mobile-max-width + ")";
 $tablet: "only screen and (min-width:" + $tablet-min-width + ") and (max-width:" + $tablet-max-width + ")";
 $desktop: "only screen and (min-width:" + $desktop-min-width + ")";

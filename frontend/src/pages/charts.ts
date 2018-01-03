@@ -7,12 +7,18 @@ import {Utils} from "../common/utils";
 export class Charts {
 
     @bindable tempData: any = [];
+    private fetcherInterval;
 
     constructor(private fetchClient: HttpClient) {
     }
 
     attached() {
         this.fetchHistory();
+    }
+
+    detached() {
+        window.clearInterval(this.fetcherInterval);
+        this.fetcherInterval = null;
     }
 
     private fetchHistory() {
@@ -28,6 +34,6 @@ export class Charts {
             });
 
         fetcher();
-        window.setInterval(fetcher, 2000);
+        this.fetcherInterval = window.setInterval(fetcher, 2000);
     }
 }

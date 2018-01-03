@@ -35,6 +35,10 @@
             font-weight: bold;
         }
     }
+
+    @media #{$mobile} {
+        margin-bottom: 10px;
+    }
 }
 
 // Grid component
@@ -47,8 +51,14 @@
             line-height: 0.5rem;
         }
     }
+
+    @media #{$mobile} {
+        // FIXME: Display datagrid on mobile properly
+        display: none;
+    }
 }
 
+// Chart component
 .chart {
     .chart-head {
         padding: $spacing;
@@ -56,10 +66,5 @@
 
     .chart-body {
         margin: 30px;
-
-        canvas {
-            //width: 100% !important;
-            //height: auto !important;
-        }
     }
 }

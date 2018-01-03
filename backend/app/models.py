@@ -1,7 +1,6 @@
 from flask import logging
 from flask_sqlalchemy import SQLAlchemy
 from passlib.apps import custom_app_context as pwd_context
-from sqlalchemy import desc
 
 logger = logging.getLogger(__name__)
 
@@ -39,22 +38,6 @@ class Weather(db.Model):
     def save(self):
         db.session.add(self)
         db.session.commit()
-
-
-def get_weather_history(pages=10):
-    weather_history = []
-
-    query = db.session.query(Weather).order_by(desc(Weather.timestamp)).limit(pages)
-    for entry in query:
-        weather_history.append(entry.as_dict())
-
-    # print(weather_history)
-    return weather_history
-
-
-def get_weather_current():
-    result = get_weather_history(pages=1)
-    return result[0] if len(result) > 0 else []
 
 
 def setup_api_user():

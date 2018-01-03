@@ -1,7 +1,8 @@
 import json
 from datetime import datetime
 
-from app.models import get_weather_history, get_weather_current, Weather, User
+from app.models import  Weather, User
+from app.services import get_weather_history, get_weather_current
 from flask import request, g
 from flask_httpauth import HTTPBasicAuth
 from flask_restful import Resource
