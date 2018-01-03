@@ -1,3 +1,4 @@
+import 'bootstrap';
 import {autoinject, PLATFORM} from 'aurelia-framework';
 import {Router, RouterConfiguration} from 'aurelia-router';
 import {Alert} from './components/alert';
