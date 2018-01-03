@@ -32,11 +32,23 @@ class Weather(db.Model):
     inHumidity = db.Column(db.Float)
     rain = db.Column(db.Float)
 
-    def as_dict(self):
-        return {c.name: str(getattr(self, c.name)) for c in self.__table__.columns}
+    def save(self):
+        db.session.add(self)
+        db.session.commit()
+
+
+class Webcam(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    timestamp = db.Column(db.DateTime(timezone=True))
+    data = db.Column(db.LargeBinary)
 
     def save(self):
         db.session.add(self)
+        db.session.commit()
+
+
+    def delete(self):
+        db.session.delete(self)
         db.session.commit()
 
 

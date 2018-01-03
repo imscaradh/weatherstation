@@ -6,7 +6,7 @@ from pathlib import Path
 # Adds local modules to PYTHONPATH
 sys.path.insert(0, str(pathlib.Path(__file__).parents[1]))
 
-from app.api import WeatherHistory, WeatherLive
+from app.api import WeatherHistory, WeatherLive, Webcam
 from app.models import init_db
 from flask import Flask, Blueprint
 from flask_cors import CORS
@@ -29,6 +29,7 @@ def create_app(system):
     api = Api(bp_api)
     api.add_resource(WeatherHistory, '/weather/history')
     api.add_resource(WeatherLive, '/weather/live')
+    api.add_resource(Webcam, '/webcam')
     app.register_blueprint(bp_api)
 
     # Configure CORS for REST API

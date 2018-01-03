@@ -1,0 +1,16 @@
+<template>
+  <require from="../components/chart"></require>
+  <require from="../common/number-format"></require>
+  <require from="../common/date-format"></require>
+
+  <div class="heading">
+    <h3>Webcam</h3>
+  </div>
+
+  <div class="row">
+    <div class="col-md">
+      <img class="webcam-image" src.bind="'data:image/jpg;base64,' + imageData"/>
+    </div>
+  </div>
+
+</template>

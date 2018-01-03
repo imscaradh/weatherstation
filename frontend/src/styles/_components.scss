@@ -26,16 +26,11 @@
     }
 
     .card-icon {
-        @media #{$mobile} {
-            width: 80px;
-        }
+        width: 60px;
+        text-align: center;
         &:before {
             font-family: "FontAwesome", serif;
-            font-size: 60px !important;
-
-            @media #{$tablet} {
-                font-size: 20px !important;
-            }
+            font-size: 40px !important;
         }
 
     }
@@ -61,11 +56,14 @@
         thead tr {
             line-height: 0.5rem;
         }
-    }
 
-    @media #{$mobile} {
-        // FIXME: Display datagrid on mobile properly
-        display: none;
+        @media #{$mobile}, #{$tablet} {
+            overflow-x: scroll;
+
+            td {
+                padding: $spacing/3;
+            }
+        }
     }
 }
 

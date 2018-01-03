@@ -1,7 +1,9 @@
+import base64
 import json
 from datetime import datetime
 
-from app.models import  Weather, User
+from app import models
+from app.models import Weather, User, db
 from app.services import get_weather_history, get_weather_current
 from flask import request, g
 from flask_httpauth import HTTPBasicAuth
@@ -34,6 +36,30 @@ class WeatherHistory(Resource):
 class WeatherLive(Resource):
     def get(self):
         return get_weather_current()
+
+
+class Webcam(Resource):
+    def get(self):
+        img = db.session.query(models.Webcam) \
+            .order_by(models.Webcam.timestamp.desc()) \
+            .first()
+
+        if img:
+            return {'time': str(img.timestamp), 'img': base64.b64encode(img.data).decode('ascii')}
+
+
+    @auth.login_required
+    def put(self):
+        entry = models.Webcam()
+        entry.timestamp = datetime.now()
+        entry.data = request.get_data()
+        entry.save()
+
+        if db.session.query(models.Webcam).count() > 20:
+            db.session.query(models.Webcam) \
+                .order_by(models.Webcam.timestamp.asc()) \
+                .first() \
+                .delete()
 
 
 @auth.verify_password

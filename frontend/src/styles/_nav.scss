@@ -1,7 +1,7 @@
 nav {
     height: $navbar-base-height;
 
-    @media #{$mobile} {
+    @media (max-width: 770px) {
         .navbar-collapse {
             background: black;
             position: absolute;

@@ -31,6 +31,13 @@ export class App {
                 title: 'Charts',
                 moduleId: PLATFORM.moduleName('pages/charts'),
                 nav: true
+            },
+            {
+                name: 'webcam',
+                route: 'webcam',
+                title: 'Webcam',
+                moduleId: PLATFORM.moduleName('pages/webcam'),
+                nav: true
             }
         ]);
 
@@ -38,7 +45,8 @@ export class App {
     }
 
     navigationChanged(href: any) {
-        $(this.navbarToggler).click();
+        if ($('.navbar-toggler').is(":visible"))
+            $(this.navbarToggler).click();
         window.location.href = href;
     }
 }
