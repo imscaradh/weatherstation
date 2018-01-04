@@ -1,6 +1,7 @@
 import {autoinject, bindable} from 'aurelia-framework';
 import {HttpClient} from 'aurelia-fetch-client';
 import {Config} from "../environment";
+import {App} from '../app';
 
 @autoinject()
 export class Webcam {
@@ -8,10 +9,13 @@ export class Webcam {
     @bindable imageData: any;
     private fetcherInterval: any;
 
-    constructor(private fetchClient: HttpClient) {
+    constructor(private fetchClient: HttpClient,
+                private app: App) {
+        this.app.loadingActive();
     }
 
     attached() {
+
         let fetcher = () => this.fetchClient.fetch(`${Config.restEndpoint}/webcam`)
             .then(response => response.json())
             .then(data => this.imageData = data["img"]);
@@ -25,4 +29,7 @@ export class Webcam {
         this.fetcherInterval = null;
     }
 
+    imageDataChanged(oldValue: any, newValue: any) {
+        this.app.loadingInactive();
+    }
 }

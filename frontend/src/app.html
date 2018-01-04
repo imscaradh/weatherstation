@@ -21,7 +21,7 @@
             data-target="#navbarToggler">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <a class="navbar-brand" href="#">Weatherstation</a>
+    <a class="navbar-brand" href="#">Wetter Merligen</a>
     <div class="collapse navbar-collapse" id="navbarToggler">
       <ul class="navbar-nav mr-auto">
         <li repeat.for="row of router.navigation" class="nav-item ${row.isActive ? 'active' : ''}">
@@ -32,6 +32,25 @@
   </nav>
 
   <div class="container">
+    <div class="loading-overlay" ref="loadingOverlay">
+      <div class="windows8">
+        <div class="wBall" id="wBall_1">
+          <div class="wInnerBall"></div>
+        </div>
+        <div class="wBall" id="wBall_2">
+          <div class="wInnerBall"></div>
+        </div>
+        <div class="wBall" id="wBall_3">
+          <div class="wInnerBall"></div>
+        </div>
+        <div class="wBall" id="wBall_4">
+          <div class="wInnerBall"></div>
+        </div>
+        <div class="wBall" id="wBall_5">
+          <div class="wInnerBall"></div>
+        </div>
+      </div>
+    </div>
     <router-view>
       <!-- Rendered router content goes here -->
     </router-view>

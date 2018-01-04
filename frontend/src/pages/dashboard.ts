@@ -2,6 +2,7 @@ import {autoinject} from 'aurelia-framework';
 import {HttpClient} from 'aurelia-fetch-client';
 import {Config} from "../environment";
 import {Utils} from "../common/utils";
+import {App} from "../app";
 
 @autoinject()
 export class Dashboard {
@@ -11,7 +12,9 @@ export class Dashboard {
     private historyData: any[] = [];
     private fetcherInterval;
 
-    constructor(private fetchClient: HttpClient) {
+    constructor(private fetchClient: HttpClient,
+                private app: App) {
+        this.app.loadingActive();
     }
 
     attached() {
@@ -27,7 +30,10 @@ export class Dashboard {
     private fetchCurrent() {
         let fetcher = () => this.fetchClient.fetch(`${Config.restEndpoint}/weather/live`)
             .then(response => response.json())
-            .then(data => this.currentData = data);
+            .then(data => {
+                this.currentData = data;
+                this.app.loadingInactive();
+            });
 
         fetcher();
         this.fetcherInterval = window.setInterval(fetcher, 5000);
@@ -40,11 +46,11 @@ export class Dashboard {
                 this.historyData.push([
                     "Zeit",
                     "Luftdruck",
-                    "Aussentemp.",
-                    "Windrichtung",
-                    "Windgeschwindigkeit",
-                    "Luftfeuchtigkeit",
-                    "Regenmenge"
+                    "Temp.",
+                    "Windricht.",
+                    "Windgesch.",
+                    "Luftfeu.",
+                    "Regen"
                 ]);
 
                 data.forEach(v => {
@@ -60,6 +66,4 @@ export class Dashboard {
                 });
             });
     }
-
-
 }

@@ -28,20 +28,30 @@
     .card-icon {
         width: 60px;
         text-align: center;
+
         &:before {
             font-family: "FontAwesome", serif;
             font-size: 40px !important;
         }
 
+        @media #{$mobile} {
+            width: 100px;
+        }
     }
 
     .card-body {
         h4 {
-            font-size: 40px;
+            font-size: 2.5rem;
             font-weight: bold;
 
             @media #{$mobile}, #{$tablet} {
-                font-size: 30px;
+                font-size: 2rem;
+            }
+        }
+
+        p {
+            @media #{$mobile}, #{$tablet} {
+                font-size: 0.8rem;
             }
         }
     }
@@ -57,12 +67,24 @@
             line-height: 0.5rem;
         }
 
+        th:first-child,
+        td:first-child {
+            min-width: 130px !important;
+        }
+
         @media #{$mobile}, #{$tablet} {
             overflow-x: scroll;
 
             td {
                 padding: $spacing/3;
             }
+        }
+
+        .loading {
+            height: 50px;
+            text-align: center;
+            border-top: 1px gray solid;
+            padding-top: 10px;
         }
     }
 }

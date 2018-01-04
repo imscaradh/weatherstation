@@ -8,15 +8,11 @@ import * as $ from "jquery";
 export class App {
     public router: Router;
     public alerts: Alert;
-    public globalVars: any = {};
-
+    public loadingOverlay: any;
     private navbarToggler: any;
 
-    constructor() {
-    }
-
     public configureRouter(config: RouterConfiguration, router: Router) {
-        config.title = 'Weatherstation';
+        config.title = 'Wetter Merligen';
 
         config.map([
             {
@@ -45,9 +41,17 @@ export class App {
         this.router = router;
     }
 
-    navigationChanged(href: any) {
+    public navigationChanged(href: any) {
         if ($('.navbar-toggler').is(":visible"))
             $(this.navbarToggler).click();
         window.location.href = href;
+    }
+
+    public loadingActive() {
+        $(this.loadingOverlay).css('visibility', 'visible');
+    }
+
+     public loadingInactive() {
+        $(this.loadingOverlay).css('visibility', 'hidden');
     }
 }

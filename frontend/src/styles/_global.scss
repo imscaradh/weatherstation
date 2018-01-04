@@ -13,21 +13,10 @@ body {
 .heading {
     margin: 40px 10px 30px 10px;
     border-bottom: 1px solid $gray-100;
-
-    h1 {
-
-    }
-
-    h2 {
-
-    }
-
-    h3 {
-
-    }
 }
 
 .container {
+    position: relative;
     min-height: calc(100vh - 56px);
     margin-top: $navbar-base-height;
     padding: 15px;
@@ -40,4 +29,17 @@ body {
 .webcam-image {
     width: 100%;
     height: auto;
+}
+
+.loading-overlay {
+    visibility: hidden;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    bottom: 0;
+    background: $gray-200;
+    z-index: 999;
+    padding-top: 20vh;
+
+    @include loadingSpinner();
 }

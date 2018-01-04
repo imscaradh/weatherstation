@@ -2,6 +2,7 @@ import {autoinject, bindable} from 'aurelia-framework';
 import {HttpClient} from 'aurelia-fetch-client';
 import {Config} from "../environment";
 import {Utils} from "../common/utils";
+import {App} from "../app";
 
 @autoinject()
 export class Charts {
@@ -9,7 +10,9 @@ export class Charts {
     @bindable tempData: any = [];
     private fetcherInterval;
 
-    constructor(private fetchClient: HttpClient) {
+    constructor(private fetchClient: HttpClient,
+                private app: App) {
+        this.app.loadingActive();
     }
 
     attached() {
@@ -31,6 +34,8 @@ export class Charts {
                     windSpeed: data.map(v => Utils.floatFormatter(v["windSpeed"], 3)),
                     rain: data.map(v => Utils.floatFormatter(v["rain"], 3)),
                 };
+
+                this.app.loadingInactive();
             });
 
         fetcher();
