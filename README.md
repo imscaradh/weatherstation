@@ -1,39 +1,52 @@
-# Weatherstation Dashboard
+# Weatherstation
 
-## Backend
 
-## Frontend
+### Prerequirements
 
-### Prerequisites:
+- [Node.js](https://nodejs.org/en/) >= 6.x
+- npm >= 3.x
+- Python 3 with PIP
 
-- [Node.js](https://nodejs.org/en/) (>=4.x or 6.x preferred)
-- npm version 3+ and [Git](https://git-scm.com/).
-- [vuestic-installer](https://github.com/epicmaxco/vuestic-installer) `npm install vuestic-installer -g`.
 
-### Installation
 
-``` bash
-# create new project via vuestic-installer command. 
-$ vuestic myproject
+## Development
 
-or
 
-# clone the repo
-$ git clone https://github.com/epicmaxco/vuestic-admin.git myproject
+#### Backend
 
-# go into app's directory and install dependencies:
-$ cd myproject
-$ npm install
+The backend uses Flask and can be requested with RESTful services. It uses a
+file-based Sqlite database.
 
-# serve with hot reload at localhost:8080.
-$ npm run dev
+To install all required dependencies, do:
+    
+    (venv)$ pip install -r requirements.txt
+    
+For running the server instance with Werkzeug, run the following command
+inside the project directory:
 
-# build for production with minification
-$ npm run build
+    (venv)$ python backend/app/app.py [development|production]
 
-# build for production and view the bundle analyzer report.
-$ npm run build --report
-```
 
-## License
-[MIT](https://github.com/epicmaxco/vuestic-admin/blob/master/LICENSE) license.
+
+#### Frontend
+
+The frontend is developed with the Aurelia web framework + webpack. 
+
+First of all the necessary dependencies have to be installed:
+
+    npm install
+    
+Afterwards one can run a live-serving with the following:
+
+    npm run serve
+    
+To build the frontend to `dist`, do:
+
+    npm run build
+
+
+## Production usage
+
+To use the frontend and backend modules in a operational environment, one can
+simply use `docker-compose` with the according configuration files inside this 
+repo.
