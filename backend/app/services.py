@@ -17,7 +17,7 @@ def get_weather_history(pages=48):
     for entry in query:
         dict_obj = {}
         for i, r in enumerate(entry):
-            dict_obj[fields[i]] = str(r)
+            dict_obj[fields[i]] = str(r) if r is not None else "0"
 
         weather_history.append(dict_obj)
 

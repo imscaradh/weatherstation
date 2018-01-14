@@ -1,12 +1,15 @@
 // Global styling for this template
 
+html, body {
+    overflow-x: hidden !important;
+}
+
 html {
     position: relative;
     min-height: 100%;
 }
 
 body {
-    overflow-x: hidden !important;
     background-color: $gray-200;
 }
 
