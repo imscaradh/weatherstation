@@ -4,7 +4,7 @@ const prod = {
 
 
 const dev = {
-    restEndpoint: `//localhost:5000/api`
+    restEndpoint: `//${window.location.hostname}:5000/api`
 };
 
 // Export configuration parameters according to current env

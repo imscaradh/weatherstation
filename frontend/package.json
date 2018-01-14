@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "clean": "rm -rf dist",
-    "serve": "webpack-dev-server --env=dev --inline --hot",
+    "serve": "webpack-dev-server --env=dev --inline --hot --host 0.0.0.0",
     "build": "webpack --env=prod"
   },
   "dependencies": {
